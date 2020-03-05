@@ -15,6 +15,9 @@ app.secret_key = 'rajat'
 api = Api(app)
 
 
+db.init_app(app)
+
+
 @app.before_first_request
 def create_db():
     db.create_all()
@@ -30,5 +33,4 @@ api.add_resource(UserRegister, '/register')
 api.add_resource(Users, '/user')
 
 if __name__ == '__main__':
-    db.init_app(app)
     app.run(port=5000, debug=True)
